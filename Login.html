@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>協力廠商‧關係會社專區登入</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-md-12" style="color: #696759; font-size: 32px; font-weight: bold">
+          協力廠商‧關係會社專區
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-12" style="padding: 0px">
+          <div class="card text-white" style="background-color: #5f3c8f">
+            <div class="card-body">
+              <div
+                class="text-center col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 text-nowrap"
+                style="color: white; font-size: 32px; font-weight: bold"
+              >
+                系統授權登入
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+                  <label
+                    for="UserName"
+                    class="control-label text-nowrap"
+                    style="color: white; font-size: 22px"
+                    >使用識別：</label
+                  >
+                </div>
+                <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+                  <input
+                    name="UserName"
+                    class="form-control"
+                    id="UserName"
+                    placeholder="使用識別"
+                    type="text"
+                    maxlength="15"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+                  <label
+                    for="Password"
+                    class="control-label text-nowrap"
+                    style="color: white; font-size: 22px"
+                    >通行密碼：</label
+                  >
+                </div>
+                <div class="col-xs-12 col-sm-5 col-md-4 col-lg-3 col-xl-2">
+                  <input
+                    name="Password"
+                    class="form-control"
+                    id="Password"
+                    placeholder="密碼"
+                    type="password"
+                    maxlength="50"
+                  />
+                </div>
+                <div class="hidden-xs col-sm-2 col-md-4 col-lg-6 col-xl-8"></div>
+              </div>
+              <input
+                name="submit1"
+                id="submit"
+                type="button"
+                class="btn btn-warning"
+                value=" 登 入 "
+                style="color: white; font-size: 18px; width: 130px; font-weight: bold"
+              />
+              <input
+                name="button1"
+                id="submitNoCheck"
+                type="button"
+                class="btn btn-info"
+                value=" 直接登入 "
+                style="font-size: 18px; width: 130px; font-weight: bold"
+              />
+              <input
+                name="button2"
+                type="button"
+                class="btn btn-info"
+                value=" 忘記密碼 "
+                style="
+                  background-color: rgb(26, 138, 26);
+                  font-size: 18px;
+                  width: 130px;
+                  font-weight: bold;
+                  margin-top: 3px;
+                "
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div
+          class="col-md-12"
+          style="
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            border: thin solid black;
+            background-color: #d8d8d8;
+            color: #5f3c8f;
+          "
+        >
+          <div class="row">
+            <div class="col-md-12">
+              <ul>
+                <li>◎ 系統 HELP DESK ◎</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script>
+      $(function () {
+        var account = "admin";
+        var password = "123";
+        var HomePage = "./Home.html";
+
+        $("#submit").click(function (e) {
+          e.preventDefault();
+          var userName = $("#UserName").val();
+          var pw = $("#Password").val();
+          if (userName !== account || pw !== pw) {
+            alert("請輸入使用識別(" + account + ")與密碼(" + password + ")");
+            return;
+          } else {
+            window.location.href = HomePage;
+          }
+        });
+
+        $("#submitNoCheck").click(function (e) {
+          e.preventDefault();
+          window.location.href = HomePage;
+        });
+      });
+    </script>
+  </body>
+</html>

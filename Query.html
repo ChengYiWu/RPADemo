@@ -1,0 +1,211 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #fbf9d3;
+      }
+
+      .midTable {
+        border: 1px solid #000;
+        background-color: #2d547d;
+        color: #fff;
+        width: 100%;
+      }
+
+      .midTable th {
+        border: 1px solid #000;
+        text-align: center;
+      }
+
+      .midTable td {
+        border: 1px solid #000;
+        text-align: left;
+        background-color: #D3D3D3;
+        color: #000;
+      }
+
+      .midTable tr td:first-child {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #ffc0cb;
+      "
+    >
+      <span>XXXXXXXX</span>
+      <span style="font-size: 22px">選取電子發票</span>
+      <span>2021/9/16 下午02:23:21</span>
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: 16px">
+      <button>查詢</button>
+      <button onclick="closeWindow();">執行</button>
+      <button>重整</button>
+      <button>離開</button>
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: 3px">
+      <span>帳款編號:</span>
+      <input type="text" style="background: #aedbfb; border: 1px solid grey" />
+      <span style="font-weight: 700; margin-left: 6px">電子發票相關問題請洽會計部#XXXX</span>
+    </div>
+    <div style="padding:0px 8px;">
+      <table class="midTable" style="margin-top: 12px">
+        <tr>
+          <th>全選</th>
+          <th>發票號碼</th>
+          <th>幣別</th>
+          <th>發票銷售金額(原幣)</th>
+          <th>發票稅額(原幣)</th>
+          <th>發票銷售額(台幣)</th>
+          <th>發票稅額(台幣)</th>
+          <th>匯率</th>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>YH64556191</td>
+          <td>NT</td>
+          <td>52800</td>
+          <td>2640</td>
+          <td>52800</td>
+          <td>2640</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>YH64556195</td>
+          <td>NT</td>
+          <td>49250</td>
+          <td>2463</td>
+          <td>49250</td>
+          <td>2463</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>YH64556196</td>
+          <td>NT</td>
+          <td>27088</td>
+          <td>1354</td>
+          <td>27088</td>
+          <td>1354</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>YH64556197</td>
+          <td>NT</td>
+          <td>27088</td>
+          <td>1354</td>
+          <td>27088</td>
+          <td>1354</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>YH64556198</td>
+          <td>NT</td>
+          <td>98500</td>
+          <td>4925</td>
+          <td>98500</td>
+          <td>4925</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>YH64556223</td>
+          <td>NT</td>
+          <td>27088</td>
+          <td>1354</td>
+          <td>27088</td>
+          <td>4925</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>YH64556231</td>
+          <td>NT</td>
+          <td>93000</td>
+          <td>4650</td>
+          <td>93000</td>
+          <td>4650</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>YH64556235</td>
+          <td>NT</td>
+          <td>4650</td>
+          <td>2325</td>
+          <td>4650</td>
+          <td>2325</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>YH64556238</td>
+          <td>NT</td>
+          <td>23250</td>
+          <td>1163</td>
+          <td>23250</td>
+          <td>1163</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>YH64556239</td>
+          <td>NT</td>
+          <td>48000</td>
+          <td>2400</td>
+          <td>48000</td>
+          <td>2400</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>YH64556240</td>
+          <td>NT</td>
+          <td>13200</td>
+          <td>660</td>
+          <td>13200</td>
+          <td>660</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>YH64556328</td>
+          <td>NT</td>
+          <td>192000</td>
+          <td>9600</td>
+          <td>192000</td>
+          <td>9600</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" /></td>
+          <td>YH64556329</td>
+          <td>NT</td>
+          <td>192000</td>
+          <td>9600</td>
+          <td>192000</td>
+          <td>9600</td>
+          <td>1</td>
+        </tr>
+      </table>
+    </div>
+    <script>
+      function closeWindow () {
+        window.close();
+      }
+    </script>
+  </body>
+</html>
