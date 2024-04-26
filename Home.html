@@ -1,0 +1,270 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>首頁</title>
+    <style>
+      .headerTable {
+        border: 1px solid #000;
+      }
+
+      .headerTable td {
+        border: 1px solid #000;
+        text-align: center;
+        min-width: 70px;
+      }
+
+      .lastRow {
+        background-color: #fefacd;
+      }
+
+      .midTable {
+        border: 1px solid #000;
+        background-color: #2d547d;
+        color: #fff;
+        width: 100%;
+      }
+
+      .midTable th {
+        border: 1px solid #000;
+        text-align: center;
+      }
+
+      .midTable td {
+        border: 1px solid #000;
+        text-align: right;
+        background-color: #fff;
+        color: #000;
+      }
+
+      .midTable tr td:first-child {
+        text-align: left;
+      }
+
+      .midTable tr td:nth-child(2) {
+        background-color: #90ee90;
+        text-align: center;
+      }
+
+      .midTable tr td:last-child {
+        background-color: #fffedf;
+      }
+    </style>
+  </head>
+  <body style="background: #aadef6">
+    <div
+      style="
+        margin-bottom: 6px;
+        background-color: #ddca9f;
+        border: 1px solid #66935c;
+        font-size: 20px;
+      "
+    >
+      <span style="font-weight: 600">發票登錄</span><span style="color: #1e11ba">(XXXXXX)</span>
+    </div>
+    <div style="display: flex">
+      <span> 廠商代號：XXXX - XXXX </span>
+      <span style="margin-left: auto"> 2024/04/26 下午 07:24:42 </span>
+    </div>
+    <div>
+      <table style="margin: auto" class="headerTable">
+        <tr>
+          <td style="width: 100px">帳號<br />編號</td>
+          <td style="width: 130px">PXXXXXXXXX</td>
+          <td style="width: 90px">松下<br />已作帳</td>
+          <td>Y</td>
+          <td colspan="2" style="width: 120px">
+            <button>儲存</button>
+            <button>列印</button>
+          </td>
+          <td style="width: 100px">是否電子<br />發票廠商</td>
+          <td>Y</td>
+          <td>是否電子<br />戳章完成</td>
+          <td>Y</td>
+        </tr>
+        <tr>
+          <td colspan="4">CSV 檔:&nbsp;<input type="file" style="width: 170px" /></td>
+          <td colspan="2">
+            <button>下載</button>
+            <button>上傳</button>
+          </td>
+          <td colspan="4">
+            <button onclick="openQuery();">選取電子發票</button>
+            <button>電子戳章承認</button>
+            <button>電子戳章還原</button>
+          </td>
+        </tr>
+        <tr>
+          <td>原幣總額</td>
+          <td>10731816</td>
+          <td>原幣銷售額</td>
+          <td>10220777</td>
+          <td>原幣稅額</td>
+          <td>511039</td>
+          <td>原幣含單價差<br />可請款額</td>
+          <td>10220777</td>
+          <td>原幣差異金額</td>
+          <td>0</td>
+        </tr>
+        <tr class="lastRow">
+          <td>台幣總額</td>
+          <td>10731816</td>
+          <td>台幣銷售額</td>
+          <td>10220777</td>
+          <td>台幣稅額</td>
+          <td>511039</td>
+          <td>台幣含單價差<br />可請款額</td>
+          <td>10220777</td>
+          <td>台幣差異金額</td>
+          <td>0</td>
+        </tr>
+      </table>
+      <div style="display: flex; padding: 0px 16px">
+        <table class="midTable" style="margin-top: 12px">
+          <tr>
+            <th>發票號碼</th>
+            <th>幣別</th>
+            <th>發票銷售金額(原幣)</th>
+            <th>發票稅額(原幣)</th>
+            <th>發票銷售額(台幣)</th>
+            <th>發票稅額(台幣)</th>
+            <th>匯率</th>
+          </tr>
+          <tr>
+            <td>YH64556191</td>
+            <td>NT</td>
+            <td>52800</td>
+            <td>2640</td>
+            <td>52800</td>
+            <td>2640</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>YH64556195</td>
+            <td>NT</td>
+            <td>49250</td>
+            <td>2463</td>
+            <td>49250</td>
+            <td>2463</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>YH64556196</td>
+            <td>NT</td>
+            <td>27088</td>
+            <td>1354</td>
+            <td>27088</td>
+            <td>1354</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>YH64556197</td>
+            <td>NT</td>
+            <td>27088</td>
+            <td>1354</td>
+            <td>27088</td>
+            <td>1354</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>YH64556198</td>
+            <td>NT</td>
+            <td>98500</td>
+            <td>4925</td>
+            <td>98500</td>
+            <td>4925</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>YH64556223</td>
+            <td>NT</td>
+            <td>27088</td>
+            <td>1354</td>
+            <td>27088</td>
+            <td>4925</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>YH64556231</td>
+            <td>NT</td>
+            <td>93000</td>
+            <td>4650</td>
+            <td>93000</td>
+            <td>4650</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>YH64556235</td>
+            <td>NT</td>
+            <td>4650</td>
+            <td>2325</td>
+            <td>4650</td>
+            <td>2325</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>YH64556238</td>
+            <td>NT</td>
+            <td>23250</td>
+            <td>1163</td>
+            <td>23250</td>
+            <td>1163</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>YH64556239</td>
+            <td>NT</td>
+            <td>48000</td>
+            <td>2400</td>
+            <td>48000</td>
+            <td>2400</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>YH64556240</td>
+            <td>NT</td>
+            <td>13200</td>
+            <td>660</td>
+            <td>13200</td>
+            <td>660</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>YH64556328</td>
+            <td>NT</td>
+            <td>192000</td>
+            <td>9600</td>
+            <td>192000</td>
+            <td>9600</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td>YH64556329</td>
+            <td>NT</td>
+            <td>192000</td>
+            <td>9600</td>
+            <td>192000</td>
+            <td>9600</td>
+            <td>1</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <script>
+      function openQuery(e) {
+        var win = window.open(
+          "./Query.html",
+          "選取電子發票",
+          "height=600,width=1000,top=100,left=100,location=0"
+        );
+
+        var timer = setInterval(function () {
+          if (win.closed) {
+            clearInterval(timer);
+            alert("確認成功");
+          }
+        }, 500);
+      }
+    </script>
+  </body>
+</html>
