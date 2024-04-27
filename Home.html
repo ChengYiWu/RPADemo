@@ -25,6 +25,10 @@
         width: 100%;
       }
 
+      .midTable.hide {
+        display: none;
+      }
+
       .midTable th {
         border: 1px solid #000;
         text-align: center;
@@ -96,32 +100,32 @@
         </tr>
         <tr>
           <td>原幣總額</td>
-          <td>10731816</td>
+          <td>-</td>
           <td>原幣銷售額</td>
-          <td>10220777</td>
+          <td>-</td>
           <td>原幣稅額</td>
-          <td>511039</td>
+          <td>-</td>
           <td>原幣含單價差<br />可請款額</td>
-          <td>10220777</td>
+          <td>-</td>
           <td>原幣差異金額</td>
-          <td>0</td>
+          <td>-</td>
         </tr>
         <tr class="lastRow">
           <td>台幣總額</td>
-          <td>10731816</td>
+          <td id="total">0</td>
           <td>台幣銷售額</td>
-          <td>10220777</td>
+          <td>-</td>
           <td>台幣稅額</td>
-          <td>511039</td>
+          <td>-</td>
           <td>台幣含單價差<br />可請款額</td>
-          <td>10220777</td>
+          <td>-</td>
           <td>台幣差異金額</td>
-          <td>0</td>
+          <td>-</td>
         </tr>
       </table>
       <div style="display: flex; padding: 0px 16px">
-        <table class="midTable" style="margin-top: 12px">
-          <tr>
+        <table class="midTable hide" style="margin-top: 12px">
+          <!-- <tr>
             <th>發票號碼</th>
             <th>幣別</th>
             <th>發票銷售金額(原幣)</th>
@@ -129,8 +133,8 @@
             <th>發票銷售額(台幣)</th>
             <th>發票稅額(台幣)</th>
             <th>匯率</th>
-          </tr>
-          <tr>
+          </tr> -->
+          <!-- <tr>
             <td>YH64556191</td>
             <td>NT</td>
             <td>52800</td>
@@ -246,11 +250,61 @@
             <td>192000</td>
             <td>9600</td>
             <td>1</td>
-          </tr>
+          </tr> -->
         </table>
       </div>
     </div>
     <script>
+      window.addEventListener("message", function (e) {
+        var table = document.querySelector(".midTable");
+        var rows = table.querySelectorAll("tr");
+        rows.forEach(row => {
+          table.removeChild(row);
+        });
+
+        table.classList.add("hide");
+
+        var total = document.getElementById("total");
+        total.textContent = 0;
+
+        if (e.data && e.data.length > 0) {
+          table.classList.remove("hide");
+          
+          // add header row
+          var headerRow = document.createElement("tr");
+          headerRow.innerHTML = `
+              <th>發票號碼</th>
+              <th>幣別</th>
+              <th>發票銷售金額(原幣)</th>
+              <th>發票稅額(原幣)</th>
+              <th>發票銷售額(台幣)</th>
+              <th>發票稅額(台幣)</th>
+              <th>匯率</th>
+            `;
+          table.appendChild(headerRow);
+
+          // render invoices data to table
+          var table = document.querySelector(".midTable");
+          var lastRow = table.querySelector(".lastRow");
+          e.data.forEach(invoice => {
+            var tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${invoice.invoiceNumber}</td>
+                <td>${invoice.currency}</td>
+                <td>${invoice.originalAmount}</td>
+                <td>${invoice.originalTax}</td>
+                <td>${invoice.twdAmount}</td>
+                <td>${invoice.twdTax}</td>
+                <td>${invoice.exchangeRate}</td>
+              `;
+            table.insertBefore(tr, lastRow);
+          });
+
+          total.textContent = e.data.reduce((acc, cur) => {
+            return acc + parseInt(cur.originalAmount);
+          }, 0);
+        }
+      });
       function openQuery(e) {
         var win = window.open(
           "./Query.html",
@@ -259,6 +313,10 @@
         );
 
         var timer = setInterval(function () {
+          if (window.selectedInvoices) {
+            // remove all rows
+          }
+
           if (win.closed) {
             clearInterval(timer);
             alert("確認成功");
