@@ -259,57 +259,58 @@
       $(function () {
         initMessage();
       });
-      
+
       function initMessage() {
         window.addEventListener("message", function (e) {
-          console.log("dodo", e);
-          var table = document.querySelector(".midTable");
-          var rows = table.querySelectorAll("tr");
-          rows.forEach(row => {
-            table.removeChild(row);
-          });
-
-          table.classList.add("hide");
-
-          var total = document.getElementById("total");
-          total.textContent = 0;
-
-          if (e.data && e.data.length > 0) {
-            table.classList.remove("hide");
-
-            // add header row
-            var headerRow = document.createElement("tr");
-            headerRow.innerHTML = `
-              <th>發票號碼</th>
-              <th>幣別</th>
-              <th>發票銷售金額(原幣)</th>
-              <th>發票稅額(原幣)</th>
-              <th>發票銷售額(台幣)</th>
-              <th>發票稅額(台幣)</th>
-              <th>匯率</th>
-            `;
-            table.appendChild(headerRow);
-
-            // render invoices data to table
+          if (e.data && Array.isArray(e.data)) {
             var table = document.querySelector(".midTable");
-            var lastRow = table.querySelector(".lastRow");
-            e.data.forEach(invoice => {
-              var tr = document.createElement("tr");
-              tr.innerHTML = `
-                <td>${invoice.invoiceNumber}</td>
-                <td>${invoice.currency}</td>
-                <td>${invoice.originalAmount}</td>
-                <td>${invoice.originalTax}</td>
-                <td>${invoice.twdAmount}</td>
-                <td>${invoice.twdTax}</td>
-                <td>${invoice.exchangeRate}</td>
-              `;
-              table.insertBefore(tr, lastRow);
+            var rows = table.querySelectorAll("tr");
+            rows.forEach(row => {
+              table.removeChild(row);
             });
 
-            total.textContent = e.data.reduce((acc, cur) => {
-              return acc + parseInt(cur.originalAmount);
-            }, 0);
+            table.classList.add("hide");
+
+            var total = document.getElementById("total");
+            total.textContent = 0;
+
+            if (e.data && e.data.length > 0) {
+              table.classList.remove("hide");
+
+              // add header row
+              var headerRow = document.createElement("tr");
+              headerRow.innerHTML = `
+                    <th>發票號碼</th>
+                    <th>幣別</th>
+                    <th>發票銷售金額(原幣)</th>
+                    <th>發票稅額(原幣)</th>
+                    <th>發票銷售額(台幣)</th>
+                    <th>發票稅額(台幣)</th>
+                    <th>匯率</th>
+                  `;
+              table.appendChild(headerRow);
+
+              // render invoices data to table
+              var table = document.querySelector(".midTable");
+              var lastRow = table.querySelector(".lastRow");
+              e.data.forEach(invoice => {
+                var tr = document.createElement("tr");
+                tr.innerHTML = `
+                      <td>${invoice.invoiceNumber}</td>
+                      <td>${invoice.currency}</td>
+                      <td>${invoice.originalAmount}</td>
+                      <td>${invoice.originalTax}</td>
+                      <td>${invoice.twdAmount}</td>
+                      <td>${invoice.twdTax}</td>
+                      <td>${invoice.exchangeRate}</td>
+                    `;
+                table.insertBefore(tr, lastRow);
+              });
+
+              total.textContent = e.data.reduce((acc, cur) => {
+                return acc + parseInt(cur.originalAmount);
+              }, 0);
+            }
           }
         });
       }
@@ -321,12 +322,12 @@
           "height=600,width=1000,top=100,left=100,location=0"
         );
 
-        // var timer = setInterval(function () {
-        //   if (win.closed) {
-        //     clearInterval(timer);
-        //     alert("確認成功");
-        //   }
-        // }, 200);
+        var timer = setInterval(function () {
+          if (win.closed) {
+            clearInterval(timer);
+            alert("確認成功");
+          }
+        }, 500);
       }
     </script>
   </body>
