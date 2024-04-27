@@ -2,20 +2,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>首頁</title>
+    <title>Document</title>
     <style>
-      .headerTable {
-        border: 1px solid #000;
-      }
-
-      .headerTable td {
-        border: 1px solid #000;
-        text-align: center;
-        min-width: 70px;
-      }
-
-      .lastRow {
-        background-color: #fefacd;
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #fbf9d3;
       }
 
       .midTable {
@@ -25,10 +17,6 @@
         width: 100%;
       }
 
-      .midTable.hide {
-        display: none;
-      }
-
       .midTable th {
         border: 1px solid #000;
         text-align: center;
@@ -36,288 +24,249 @@
 
       .midTable td {
         border: 1px solid #000;
-        text-align: right;
-        background-color: #fff;
+        text-align: left;
+        background-color: #d3d3d3;
         color: #000;
       }
 
       .midTable tr td:first-child {
-        text-align: left;
-      }
-
-      .midTable tr td:nth-child(2) {
-        background-color: #90ee90;
         text-align: center;
       }
 
-      .midTable tr td:last-child {
-        background-color: #fffedf;
+      .midTable tr:last-child td {
+        background-color: #ebc530;
       }
     </style>
   </head>
-  <body style="background: #aadef6">
+  <body>
     <div
       style="
-        margin-bottom: 6px;
-        background-color: #ddca9f;
-        border: 1px solid #66935c;
-        font-size: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #ffc0cb;
       "
     >
-      <span style="font-weight: 600">發票登錄</span><span style="color: #1e11ba">(XXXXXX)</span>
+      <span>XXXXXXXX</span>
+      <span style="font-size: 22px">選取電子發票</span>
+      <span>2021/9/16 下午02:23:21</span>
     </div>
-    <div style="display: flex">
-      <span> 廠商代號：XXXX - XXXX </span>
-      <span style="margin-left: auto"> 2024/04/26 下午 07:24:42 </span>
+    <div style="display: flex; justify-content: center; margin-top: 16px">
+      <button>查詢</button>
+      <button onclick="closeWindow();">執行</button>
+      <button>重整</button>
+      <button>離開</button>
     </div>
-    <div>
-      <table style="margin: auto" class="headerTable">
+    <div style="display: flex; justify-content: center; margin-top: 3px">
+      <span>帳款編號:</span>
+      <input type="text" style="background: #aedbfb; border: 1px solid grey" />
+      <span style="font-weight: 700; margin-left: 6px">電子發票相關問題請洽會計部#XXXX</span>
+    </div>
+    <div style="padding: 0px 8px">
+      <table class="midTable" style="margin-top: 12px">
         <tr>
-          <td style="width: 100px">帳號<br />編號</td>
-          <td style="width: 130px">PXXXXXXXXX</td>
-          <td style="width: 90px">松下<br />已作帳</td>
-          <td>Y</td>
-          <td colspan="2" style="width: 120px">
-            <button>儲存</button>
-            <button>列印</button>
-          </td>
-          <td style="width: 100px">是否電子<br />發票廠商</td>
-          <td>Y</td>
-          <td>是否電子<br />戳章完成</td>
-          <td>Y</td>
+          <th>全選</th>
+          <th>發票號碼</th>
+          <th>幣別</th>
+          <th>發票銷售金額(原幣)</th>
+          <th>發票稅額(原幣)</th>
+          <th>發票銷售額(台幣)</th>
+          <th>發票稅額(台幣)</th>
+          <th>匯率</th>
         </tr>
         <tr>
-          <td colspan="4">CSV 檔:&nbsp;<input type="file" style="width: 170px" /></td>
-          <td colspan="2">
-            <button>下載</button>
-            <button>上傳</button>
-          </td>
-          <td colspan="4">
-            <button onclick="openQuery();">選取電子發票</button>
-            <button>電子戳章承認</button>
-            <button>電子戳章還原</button>
-          </td>
+          <td><input type="checkbox" name="invoices" value="YH64556191" /></td>
+          <td>YH64556191</td>
+          <td>NT</td>
+          <td>52800</td>
+          <td>2640</td>
+          <td>52800</td>
+          <td>2640</td>
+          <td>1</td>
         </tr>
         <tr>
-          <td>原幣總額</td>
-          <td>-</td>
-          <td>原幣銷售額</td>
-          <td>-</td>
-          <td>原幣稅額</td>
-          <td>-</td>
-          <td>原幣含單價差<br />可請款額</td>
-          <td>-</td>
-          <td>原幣差異金額</td>
-          <td>-</td>
+          <td><input type="checkbox" name="invoices" value="YH64556195" /></td>
+          <td>YH64556195</td>
+          <td>NT</td>
+          <td>49250</td>
+          <td>2463</td>
+          <td>49250</td>
+          <td>2463</td>
+          <td>1</td>
         </tr>
-        <tr class="lastRow">
-          <td>台幣總額</td>
-          <td id="total">0</td>
-          <td>台幣銷售額</td>
-          <td>-</td>
-          <td>台幣稅額</td>
-          <td>-</td>
-          <td>台幣含單價差<br />可請款額</td>
-          <td>-</td>
-          <td>台幣差異金額</td>
-          <td>-</td>
+        <tr>
+          <td><input type="checkbox" name="invoices" value="YH64556196" /></td>
+          <td>YH64556196</td>
+          <td>NT</td>
+          <td>27088</td>
+          <td>1354</td>
+          <td>27088</td>
+          <td>1354</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="invoices" value="YH64556197" /></td>
+          <td>YH64556197</td>
+          <td>NT</td>
+          <td>27088</td>
+          <td>1354</td>
+          <td>27088</td>
+          <td>1354</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="invoices" value="YH64556198" /></td>
+          <td>YH64556198</td>
+          <td>NT</td>
+          <td>98500</td>
+          <td>4925</td>
+          <td>98500</td>
+          <td>4925</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="invoices" value="YH64556223" /></td>
+          <td>YH64556223</td>
+          <td>NT</td>
+          <td>27088</td>
+          <td>1354</td>
+          <td>27088</td>
+          <td>4925</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="invoices" value="YH64556231" /></td>
+          <td>YH64556231</td>
+          <td>NT</td>
+          <td>93000</td>
+          <td>4650</td>
+          <td>93000</td>
+          <td>4650</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="invoices" value="YH64556235" /></td>
+          <td>YH64556235</td>
+          <td>NT</td>
+          <td>4650</td>
+          <td>2325</td>
+          <td>4650</td>
+          <td>2325</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="invoices" value="YH64556238" /></td>
+          <td>YH64556238</td>
+          <td>NT</td>
+          <td>23250</td>
+          <td>1163</td>
+          <td>23250</td>
+          <td>1163</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="invoices" value="YH64556239" /></td>
+          <td>YH64556239</td>
+          <td>NT</td>
+          <td>48000</td>
+          <td>2400</td>
+          <td>48000</td>
+          <td>2400</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="invoices" value="YH64556240" /></td>
+          <td>YH64556240</td>
+          <td>NT</td>
+          <td>13200</td>
+          <td>660</td>
+          <td>13200</td>
+          <td>660</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="invoices" value="YH64556328" /></td>
+          <td>YH64556328</td>
+          <td>NT</td>
+          <td>192000</td>
+          <td>9600</td>
+          <td>192000</td>
+          <td>9600</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox" name="invoices" value="YH64556329" /></td>
+          <td>YH64556329</td>
+          <td>NT</td>
+          <td>192000</td>
+          <td>9600</td>
+          <td>192000</td>
+          <td>9600</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td colspan="3" style="text-align: right">已選取發票金額合計</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+          <td></td>
         </tr>
       </table>
-      <div style="display: flex; padding: 0px 16px">
-        <table class="midTable hide" style="margin-top: 12px">
-          <!-- <tr>
-            <th>發票號碼</th>
-            <th>幣別</th>
-            <th>發票銷售金額(原幣)</th>
-            <th>發票稅額(原幣)</th>
-            <th>發票銷售額(台幣)</th>
-            <th>發票稅額(台幣)</th>
-            <th>匯率</th>
-          </tr> -->
-          <!-- <tr>
-            <td>YH64556191</td>
-            <td>NT</td>
-            <td>52800</td>
-            <td>2640</td>
-            <td>52800</td>
-            <td>2640</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>YH64556195</td>
-            <td>NT</td>
-            <td>49250</td>
-            <td>2463</td>
-            <td>49250</td>
-            <td>2463</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>YH64556196</td>
-            <td>NT</td>
-            <td>27088</td>
-            <td>1354</td>
-            <td>27088</td>
-            <td>1354</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>YH64556197</td>
-            <td>NT</td>
-            <td>27088</td>
-            <td>1354</td>
-            <td>27088</td>
-            <td>1354</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>YH64556198</td>
-            <td>NT</td>
-            <td>98500</td>
-            <td>4925</td>
-            <td>98500</td>
-            <td>4925</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>YH64556223</td>
-            <td>NT</td>
-            <td>27088</td>
-            <td>1354</td>
-            <td>27088</td>
-            <td>4925</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>YH64556231</td>
-            <td>NT</td>
-            <td>93000</td>
-            <td>4650</td>
-            <td>93000</td>
-            <td>4650</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>YH64556235</td>
-            <td>NT</td>
-            <td>4650</td>
-            <td>2325</td>
-            <td>4650</td>
-            <td>2325</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>YH64556238</td>
-            <td>NT</td>
-            <td>23250</td>
-            <td>1163</td>
-            <td>23250</td>
-            <td>1163</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>YH64556239</td>
-            <td>NT</td>
-            <td>48000</td>
-            <td>2400</td>
-            <td>48000</td>
-            <td>2400</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>YH64556240</td>
-            <td>NT</td>
-            <td>13200</td>
-            <td>660</td>
-            <td>13200</td>
-            <td>660</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>YH64556328</td>
-            <td>NT</td>
-            <td>192000</td>
-            <td>9600</td>
-            <td>192000</td>
-            <td>9600</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <td>YH64556329</td>
-            <td>NT</td>
-            <td>192000</td>
-            <td>9600</td>
-            <td>192000</td>
-            <td>9600</td>
-            <td>1</td>
-          </tr> -->
-        </table>
-      </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script>
-      window.addEventListener("message", function (e) {
-        var table = document.querySelector(".midTable");
-        var rows = table.querySelectorAll("tr");
-        rows.forEach(row => {
-          table.removeChild(row);
-        });
-
-        table.classList.add("hide");
-
-        var total = document.getElementById("total");
-        total.textContent = 0;
-
-        if (e.data && e.data.length > 0) {
-          table.classList.remove("hide");
-
-          // add header row
-          var headerRow = document.createElement("tr");
-          headerRow.innerHTML = `
-              <th>發票號碼</th>
-              <th>幣別</th>
-              <th>發票銷售金額(原幣)</th>
-              <th>發票稅額(原幣)</th>
-              <th>發票銷售額(台幣)</th>
-              <th>發票稅額(台幣)</th>
-              <th>匯率</th>
-            `;
-          table.appendChild(headerRow);
-
-          // render invoices data to table
-          var table = document.querySelector(".midTable");
-          var lastRow = table.querySelector(".lastRow");
-          e.data.forEach(invoice => {
-            var tr = document.createElement("tr");
-            tr.innerHTML = `
-                <td>${invoice.invoiceNumber}</td>
-                <td>${invoice.currency}</td>
-                <td>${invoice.originalAmount}</td>
-                <td>${invoice.originalTax}</td>
-                <td>${invoice.twdAmount}</td>
-                <td>${invoice.twdTax}</td>
-                <td>${invoice.exchangeRate}</td>
-              `;
-            table.insertBefore(tr, lastRow);
-          });
-
-          total.textContent = e.data.reduce((acc, cur) => {
-            return acc + parseInt(cur.originalAmount);
-          }, 0);
-        }
+      $(function () {
+        initCheckbox();
       });
-      function openQuery(e) {
-        var win = window.open(
-          "./Query.html",
-          "選取電子發票",
-          "height=600,width=1000,top=100,left=100,location=0"
-        );
 
-        var timer = setInterval(function () {
-          if (win.closed) {
-            clearInterval(timer);
-            alert("確認成功");
+      function initCheckbox() {
+        $('input[type="checkbox"]').on("change", function () {
+          var selected = $('input[type="checkbox"]:checked');
+          var lastRowColspan = 2;
+          for (var i = 4; i <= 7; i++) {
+            if (selected.length > 0) {
+              var sum = 0;
+              selected.each(function () {
+                var tr = $(this).closest("tr");
+                var td = tr.find("td:nth-child(" + i + ")");
+                sum += parseInt(td.text());
+
+                // and replace value to last row td
+                var lastRow = $(
+                  ".midTable tr:last-child td:nth-child(" + (i - lastRowColspan) + ")"
+                );
+                lastRow.text(sum);
+              });
+            } else {
+              var lastRow = $(".midTable tr:last-child td:nth-child(" + (i - lastRowColspan) + ")");
+              lastRow.text(0);
+            }
           }
-        }, 200);
+        });
+      }
+
+      function closeWindow() {
+        // find all selected checkbox row and get row data to object
+        var selected = $('input[type="checkbox"]:checked');
+        var selectedData = [];
+        selected.each(function () {
+          var tr = $(this).closest("tr");
+          var data = {
+            invoiceNumber: tr.find("td:nth-child(2)").text(),
+            currency: tr.find("td:nth-child(3)").text(),
+            originalAmount: tr.find("td:nth-child(4)").text(),
+            originalTax: tr.find("td:nth-child(5)").text(),
+            twdAmount: tr.find("td:nth-child(6)").text(),
+            twdTax: tr.find("td:nth-child(7)").text(),
+            exchangeRate: tr.find("td:nth-child(8)").text(),
+          };
+          selectedData.push(data);
+        });
+        window.opener.postMessage(selectedData, '*');
+        setTimeout(() => {
+          window.close();
+        }, 500);
       }
     </script>
   </body>
