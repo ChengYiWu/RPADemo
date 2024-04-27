@@ -269,7 +269,7 @@
 
         if (e.data && e.data.length > 0) {
           table.classList.remove("hide");
-          
+
           // add header row
           var headerRow = document.createElement("tr");
           headerRow.innerHTML = `
@@ -313,15 +313,11 @@
         );
 
         var timer = setInterval(function () {
-          if (window.selectedInvoices) {
-            // remove all rows
-          }
-
           if (win.closed) {
             clearInterval(timer);
             alert("確認成功");
           }
-        }, 500);
+        }, 200);
       }
     </script>
   </body>
