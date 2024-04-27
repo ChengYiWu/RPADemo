@@ -254,26 +254,32 @@
         </table>
       </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script>
-      window.addEventListener("message", function (e) {
-        console.log("dodo", e);
-        var table = document.querySelector(".midTable");
-        var rows = table.querySelectorAll("tr");
-        rows.forEach(row => {
-          table.removeChild(row);
-        });
+      $(function () {
+        initMessage();
+      });
+      
+      function initMessage() {
+        window.addEventListener("message", function (e) {
+          console.log("dodo", e);
+          var table = document.querySelector(".midTable");
+          var rows = table.querySelectorAll("tr");
+          rows.forEach(row => {
+            table.removeChild(row);
+          });
 
-        table.classList.add("hide");
+          table.classList.add("hide");
 
-        var total = document.getElementById("total");
-        total.textContent = 0;
+          var total = document.getElementById("total");
+          total.textContent = 0;
 
-        if (e.data && e.data.length > 0) {
-          table.classList.remove("hide");
+          if (e.data && e.data.length > 0) {
+            table.classList.remove("hide");
 
-          // add header row
-          var headerRow = document.createElement("tr");
-          headerRow.innerHTML = `
+            // add header row
+            var headerRow = document.createElement("tr");
+            headerRow.innerHTML = `
               <th>發票號碼</th>
               <th>幣別</th>
               <th>發票銷售金額(原幣)</th>
@@ -282,14 +288,14 @@
               <th>發票稅額(台幣)</th>
               <th>匯率</th>
             `;
-          table.appendChild(headerRow);
+            table.appendChild(headerRow);
 
-          // render invoices data to table
-          var table = document.querySelector(".midTable");
-          var lastRow = table.querySelector(".lastRow");
-          e.data.forEach(invoice => {
-            var tr = document.createElement("tr");
-            tr.innerHTML = `
+            // render invoices data to table
+            var table = document.querySelector(".midTable");
+            var lastRow = table.querySelector(".lastRow");
+            e.data.forEach(invoice => {
+              var tr = document.createElement("tr");
+              tr.innerHTML = `
                 <td>${invoice.invoiceNumber}</td>
                 <td>${invoice.currency}</td>
                 <td>${invoice.originalAmount}</td>
@@ -298,14 +304,16 @@
                 <td>${invoice.twdTax}</td>
                 <td>${invoice.exchangeRate}</td>
               `;
-            table.insertBefore(tr, lastRow);
-          });
+              table.insertBefore(tr, lastRow);
+            });
 
-          total.textContent = e.data.reduce((acc, cur) => {
-            return acc + parseInt(cur.originalAmount);
-          }, 0);
-        }
-      });
+            total.textContent = e.data.reduce((acc, cur) => {
+              return acc + parseInt(cur.originalAmount);
+            }, 0);
+          }
+        });
+      }
+
       function openQuery(e) {
         var win = window.open(
           "./Query.html",
