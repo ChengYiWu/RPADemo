@@ -247,6 +247,23 @@
       }
 
       function closeWindow() {
+        // find all selected checkbox row and get row data to object
+        var selected = $('input[type="checkbox"]:checked');
+        var selectedData = [];
+        selected.each(function () {
+          var tr = $(this).closest("tr");
+          var data = {
+            invoiceNumber: tr.find("td:nth-child(2)").text(),
+            currency: tr.find("td:nth-child(3)").text(),
+            originalAmount: tr.find("td:nth-child(4)").text(),
+            originalTax: tr.find("td:nth-child(5)").text(),
+            twdAmount: tr.find("td:nth-child(6)").text(),
+            twdTax: tr.find("td:nth-child(7)").text(),
+            exchangeRate: tr.find("td:nth-child(8)").text(),
+          };
+          selectedData.push(data);
+        });
+        window.opener.postMessage(selectedData, '*');
         window.close();
       }
     </script>
