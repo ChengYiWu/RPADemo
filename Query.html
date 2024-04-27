@@ -32,6 +32,10 @@
       .midTable tr td:first-child {
         text-align: center;
       }
+
+      .midTable tr:last-child td {
+        background-color: #ebc530;
+      }
     </style>
   </head>
   <body>
@@ -201,9 +205,7 @@
           <td>1</td>
         </tr>
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td colspan="3" style="text-align: right;">已選取發票金額合計</td>
           <td>0</td>
           <td>0</td>
           <td>0</td>
@@ -229,7 +231,8 @@
               sum += parseInt(td.text());
 
               // and replace value to last row td
-              var lastRow = $(".midTable tr:last-child td:nth-child(" + i + ")");
+              var lastIndex = i - 2;
+              var lastRow = $(".midTable tr:last-child td:nth-child(" + lastIndex + ")");
               lastRow.text(sum);
             });
           }
