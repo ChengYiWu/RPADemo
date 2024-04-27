@@ -205,7 +205,7 @@
           <td>1</td>
         </tr>
         <tr>
-          <td colspan="3" style="text-align: right;">已選取發票金額合計</td>
+          <td colspan="3" style="text-align: right">已選取發票金額合計</td>
           <td>0</td>
           <td>0</td>
           <td>0</td>
@@ -216,25 +216,32 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script>
-      $(function() {
+      $(function () {
         initCheckbox();
       });
 
       function initCheckbox() {
-        $('input[type="checkbox"]').on("change", function() {
+        $('input[type="checkbox"]').on("change", function () {
           var selected = $('input[type="checkbox"]:checked');
-          for(var i = 4; i <= 7; i++) {
-            var sum = 0;
-            selected.each(function() {
-              var tr = $(this).closest("tr");
-              var td = tr.find("td:nth-child(" + i + ")");
-              sum += parseInt(td.text());
+          var lastRowColspan = 2;
+          for (var i = 4; i <= 7; i++) {
+            if (selected.length > 0) {
+              var sum = 0;
+              selected.each(function () {
+                var tr = $(this).closest("tr");
+                var td = tr.find("td:nth-child(" + i + ")");
+                sum += parseInt(td.text());
 
-              // and replace value to last row td
-              var lastIndex = i - 2;
-              var lastRow = $(".midTable tr:last-child td:nth-child(" + lastIndex + ")");
-              lastRow.text(sum);
-            });
+                // and replace value to last row td
+                var lastRow = $(
+                  ".midTable tr:last-child td:nth-child(" + (i - lastRowColspan) + ")"
+                );
+                lastRow.text(sum);
+              });
+            } else {
+              var lastRow = $(".midTable tr:last-child td:nth-child(" + (i - lastRowColspan) + ")");
+              lastRow.text(0);
+            }
           }
         });
       }
