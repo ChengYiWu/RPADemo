@@ -264,9 +264,7 @@
           selectedData.push(data);
         });
         window.opener.postMessage(selectedData, '*');
-        setTimeout(() => {
-          window.close();
-        }, 500);
+        window.close();
       }
     </script>
   </body>
